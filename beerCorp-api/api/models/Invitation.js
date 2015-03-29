@@ -8,13 +8,34 @@
 module.exports = {
 
     attributes: {
+
         name:{
             type:"string", 
             required:true,
             minLength: 2
         },
-        position:{
-            type:"json",
+        senderLocationLatitude:{
+            type:"float",
+            required:true,
+            unique: false
+        },
+        senderLocationLongitude:{
+            type:"float",
+            required:true,
+            unique: false
+        },
+        receiverLocationLatitude:{
+            type:"float",
+            required:true,
+            unique: false
+        },
+        receiverLocationLongitude:{
+            type:"float",
+            required:true,
+            unique: false
+        },
+        status:{
+            type:"int",
             required:true,
             unique: false
         },

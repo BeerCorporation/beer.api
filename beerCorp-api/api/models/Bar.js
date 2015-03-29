@@ -14,8 +14,13 @@ module.exports = {
             required:true,
             minLength: 2
         },
-        position:{
-            type:"json",
+        latitude:{
+            type:"float",
+            required:true,
+            unique: false
+        },
+        longitude:{
+            type:"float",
             required:true,
             unique: false
         },
