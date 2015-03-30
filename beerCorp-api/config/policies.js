@@ -54,6 +54,10 @@ module.exports.policies = {
         "create": true,
         "findByPseudo" : true,
     },
+    BarController: {
+      "create": true,
+      "findByName" : true,
+    },
     AuthController: {
         '*': true,
     }

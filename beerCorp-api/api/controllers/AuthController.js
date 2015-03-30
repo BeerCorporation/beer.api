@@ -14,9 +14,6 @@ module.exports = {
     },
     process: function(req, res) {
         passport.authenticate('local', function(err, user, info) {
-            console.log(user);
-            console.log(err);
-            console.log(info);
             if( (err)||(!user) ) {
                 return res.send({
                     message: 'login failed'

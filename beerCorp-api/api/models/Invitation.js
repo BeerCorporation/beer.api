@@ -9,10 +9,15 @@ module.exports = {
 
     attributes: {
 
-        name:{
-            type:"string", 
+        sender:{
+            type: 'string', 
             required:true,
-            minLength: 2
+            unique: false,
+        },
+        receiver:{
+            type: 'string', 
+            required:true,
+            unique: false,
         },
         senderLocationLatitude:{
             type:"float",

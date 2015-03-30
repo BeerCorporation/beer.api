@@ -13,13 +13,19 @@ module.exports = {
         pseudo:{
             type:"string", 
             required:true,
-            minLength: 2
+            minLength: 2,
+            unique: true,
         },
         password:{
             type:"string",
             required:true,
             unique: false
         },
+        friends:{
+            collection:"user",
+            via:"user",
+        },
+        
         // override default toJSON
         toJSON: function() {
             var obj = this.toObject();

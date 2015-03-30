@@ -8,13 +8,32 @@
 module.exports = {
 
    /**
-   * BarController.create()
+   * BarController.findByName()
    */
-  create: function (req, res) {
-      return res.json({
-          todo: 'Not implemented yet!'
-      });
-  },
+    findByName:function(req,res)
+    {
+        var id = req.param('id');
+        bar.findOne({name:id})
+            .exec(function(err,bar){
+                if(err)
+                    res.json({error:err});
+                if(bar === undefined)
+                    res.notFound();
+                else
+                    res.json({notFound:false,barData:bar});
+            });
+      },
+
+
+    /**
+     * BarController.create()
+     */
+    create: function (req, res, next) {
+        Bar.create(req.params.all(), function barCreated(err, bar){
+            if (err) return next(err);
+            return res.json(bar);
+        });
+    },
 
 
   /**

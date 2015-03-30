@@ -12,7 +12,8 @@ module.exports = {
         name:{
             type:"string", 
             required:true,
-            minLength: 2
+            minLength: 2,
+            unique: true,
         },
         latitude:{
             type:"float",

@@ -20,7 +20,6 @@ passport.use(new LocalStrategy({
     },
     function(pseudo, password, done) {
         User.findOne({ pseudo: pseudo }).exec(function(err, user) {
-            console.log('wtf');
             if(err) { return done(err); }
             if(!user) { return done(null, false, { message: 'Unknown user ' + pseudo }); }
             bcrypt.compare(password, user.password, function(err, res) {
