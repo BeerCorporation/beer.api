@@ -7,18 +7,39 @@
 
 module.exports = {
 
-  findUserbyPseudo:function(req,res)
+  /**
+   * UserController.findByPseudo()
+   */
+  findByPseudo:function(req,res)
   {
-    var id = req.param('id');
-    User.findOne({pseudo:id})
-        .exec(function(err,user){
+      var id = req.param('id');
+      User.findOne({pseudo:id})
+          .exec(function(err,user){
+              if(err)
+                  res.json({error:err});
+              if(user === undefined)
+                  res.notFound();
+              else
+                  res.json({notFound:false,userData:user});
+          });
+  },
 
-          if(err)
-            res.json({error:err});
-          if(user === undefined)
-            res.notFound();
-          else
-            res.json({notFound:false,userData:user});
-        });
-  }
+
+  /**
+   * UserController.create()
+  create: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
+*/
+
+  /**
+   * UserController.delete()
+   */
+  delete: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
 };

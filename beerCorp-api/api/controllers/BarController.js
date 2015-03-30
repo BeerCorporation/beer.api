@@ -6,6 +6,23 @@
  */
 
 module.exports = {
-	
-};
 
+   /**
+   * BarController.create()
+   */
+  create: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
+
+
+  /**
+   * BarController.delete()
+   */
+  delete: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
+};

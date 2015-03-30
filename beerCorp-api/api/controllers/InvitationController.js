@@ -6,6 +6,23 @@
  */
 
 module.exports = {
-	
-};
+    
+  /**
+   * InvitationController.create()
+   */
+  create: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
 
+
+  /**
+   * InvitationController.delete()
+   */
+  delete: function (req, res) {
+      return res.json({
+          todo: 'Not implemented yet!'
+      });
+  },
+};
