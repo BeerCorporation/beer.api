@@ -21,11 +21,22 @@ module.exports = {
             required:true,
             unique: false
         },
-        friends:{
-            collection:"user",
-            via:"user",
+        receivedInvitations: {
+            collection:"invitation",
+            via:"receiver",
+            dominant:true,
         },
-        
+        sentInvitations: {
+            collection:"invitation",
+            via:"sender",
+            dominant:true,
+        },
+        friends: {
+            collection:"friends",
+            via:"user",
+            dominant: true,
+        },
+
         // override default toJSON
         toJSON: function() {
             var obj = this.toObject();

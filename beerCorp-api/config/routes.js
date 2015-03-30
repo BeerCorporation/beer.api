@@ -45,7 +45,36 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  
+  'GET /all-users' : {
+    controller: 'UserController',
+    action: 'find',
+  },
+
+  'GET /user/:pseudo' : {
+    controller: 'UserController',
+    action: 'findByPseudo',
+  },
+
+  'GET /user/sent-invitations/:pseudo' : {
+    controller: 'UserController',
+    action: 'findSentInvitations',
+  },
+
+  'GET /user/received-invitations/:pseudo' : {
+    controller: 'UserController',
+    action: 'findReceivedInvitations',
+  },
+
+  'GET /user/friends/:pseudo' : {
+    controller: 'FriendsController',
+    action: 'findFriends',
+  },
+
+  'GET /user/bars/:pseudo' : {
+    controller: 'BarController',
+    action: 'find',
+  },
+
   'GET /login': {
       controller: 'AuthController',
       action: 'login'

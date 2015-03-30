@@ -10,12 +10,14 @@ module.exports = {
     attributes: {
 
         sender:{
-            type: 'string', 
+            collection: 'user',
+            via:"sentInvitations",
             required:true,
             unique: false,
         },
         receiver:{
-            type: 'string', 
+            collection: 'user',
+            via:"receivedInvitations",
             required:true,
             unique: false,
         },

@@ -18,6 +18,21 @@ module.exports = {
     },
 
 
+    findByUser:function(req,res)
+    {
+        var id = req.param('id');
+        Invitation.findOne({name:id})
+            .exec(function(err,invitation){
+                if(err)
+                    res.json({error:err});
+                if(invitation === undefined)
+                    res.notFound();
+                else
+                    res.json({notFound:false,invitationData:invitation});
+            });
+      },
+
+
     /**
      * InvitationController.delete()
      */

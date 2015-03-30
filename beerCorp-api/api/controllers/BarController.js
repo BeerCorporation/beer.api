@@ -13,7 +13,7 @@ module.exports = {
     findByName:function(req,res)
     {
         var id = req.param('id');
-        bar.findOne({name:id})
+        Bar.findOne({name:id})
             .exec(function(err,bar){
                 if(err)
                     res.json({error:err});
@@ -36,12 +36,12 @@ module.exports = {
     },
 
 
-  /**
-   * BarController.delete()
-   */
-  delete: function (req, res) {
-      return res.json({
-          todo: 'Not implemented yet!'
-      });
-  },
+    /**
+    * BarController.delete()
+    */
+    delete: function (req, res) {
+        return res.json({
+            todo: 'Not implemented yet!'
+        });
+    },
 };
