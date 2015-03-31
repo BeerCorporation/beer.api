@@ -12,9 +12,8 @@ module.exports = {
      */
     findByPseudo:function(req,res)
     {
-        var id = req.param('pseudo');
-        User.findOne({pseudo:id})
-            .exec(function(err,user){
+        User.findOne({pseudo: req.param('pseudo')})
+            .exec(function(err, user){
                 if(err)
                     res.json({error:err});
                 if(user === undefined)
@@ -29,9 +28,21 @@ module.exports = {
      * UserController.create()
      */
     create: function (req, res, next) {
-        User.create(req.params.all(), function userCreated(err, user){
-            if (err) return next(err);
-            return res.json(user);
+        User.findOne({ pseudo: req.param('pseudo') })
+        .exec(function(err, user){
+                if(err)
+                    res.json({error:err});
+                if(user === undefined){
+                    User.create(
+                      {
+                        pseudo : req.param('pseudo'),
+                        password: req.param('password'),
+                      }, function userCreated(err, user){
+                        if (err) return next(err);
+                        return res.json(user);
+                    });
+                } else
+                    return res.json({ok:'User already registered'});
         });
     },
 
@@ -50,8 +61,7 @@ module.exports = {
      */
     findSentInvitations:function(req,res)
     {
-        var id = req.param('pseudo');
-        User.findOne({pseudo:id})
+        User.findOne({pseudo: req.param('pseudo')})
             .populate('sentInvitations')
             .exec(function(err,sentInvitations){
                 if(err)
@@ -68,8 +78,7 @@ module.exports = {
      */
     findReceivedInvitations:function(req,res)
     {
-        var id = req.param('pseudo');
-        User.findOne({pseudo:id})
+        User.findOne({pseudo: req.param('pseudo')})
             .populate('receivedInvitations')
             .exec(function(err,receivedInvitations){
                 if(err)
@@ -86,8 +95,7 @@ module.exports = {
      */
     findFriends:function(req,res)
     {
-        var id = req.param('pseudo');
-        User.findOne({pseudo:id})
+        User.findOne({pseudo: req.param('pseudo')})
             .populate('friends')
             .exec(function(err,friends){
                 if(err)

@@ -50,6 +50,11 @@ module.exports.routes = {
     action: 'find',
   },
 
+  'POST /create-user' : {
+    controller: 'UserController',
+    action: 'create',
+  },
+
   'GET /user/:pseudo' : {
     controller: 'UserController',
     action: 'findByPseudo',
@@ -70,6 +75,11 @@ module.exports.routes = {
     action: 'findFriends',
   },
 
+  'POST /user/befriend' : {
+    controller: 'FriendsController',
+    action: 'create',
+  },
+
   'GET /user/bars/:pseudo' : {
     controller: 'BarController',
     action: 'find',
@@ -79,12 +89,25 @@ module.exports.routes = {
       controller: 'AuthController',
       action: 'login'
   },
+
   'POST /login': {
       controller: 'AuthController',
       action: 'process'
   },
-  'GET /logout': {
+
+  'POST /logout': {
       controller: 'AuthController',
       action: 'logout'
-  }
+  },
+
+  'GET /bar/:name' : {
+    controller: 'BarController',
+    action: 'findByName',
+  },
+
+  'POST /bar/create' : {
+    controller: 'BarController',
+    action: 'create',
+  },
+
 };
