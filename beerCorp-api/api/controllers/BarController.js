@@ -12,26 +12,33 @@ module.exports = {
    */
     findByName:function(req,res)
     {
-        var id = req.param('id');
-        Bar.findOne({name:id})
+        Bar.findOne({name: req.param('name')})
             .exec(function(err,bar){
                 if(err)
                     res.json({error:err});
                 if(bar === undefined)
                     res.notFound();
                 else
-                    res.json({notFound:false,barData:bar});
+                    res.json({notFound:false, barData:bar});
             });
       },
-
+      
 
     /**
      * BarController.create()
      */
     create: function (req, res, next) {
-        Bar.create(req.params.all(), function barCreated(err, bar){
-            if (err) return next(err);
-            return res.json(bar);
+        Bar.findOne({ name: req.param('name') })
+        .exec(function(err, bar){
+                if(err)
+                    res.json({error:err});
+                if(bar === undefined){
+                    Bar.create(req.params.all(), function barCreated(err, bar){
+                        if (err) return next(err);
+                        return res.json(bar);
+                    });
+                } else
+                    return res.json({ok:'Bar already registered'});
         });
     },
 

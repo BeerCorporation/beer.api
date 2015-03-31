@@ -11,8 +11,8 @@ module.exports = {
      */
     create: function (req, res, next) {
         Friends.find({
-            user: req.params.user,
-            friend: req.params.friend,
+            user: req.param('user'),
+            friend: req.param('friend'),
         }).exec(function(err,friends){
                 if(err)
                     res.json({error:err});
